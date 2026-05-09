@@ -1,0 +1,177 @@
+/* ОБЩИЕ СТИЛИ */
+* {
+  font-family: "Ubuntu", sans-serif;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  background-color: #1a1a1a;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  min-height: 100vh;
+}
+
+/* ЦЕНТРИРОВАНИЕ ГЛАВНОЙ СТРАНИЦЫ */
+#home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрирует по горизонтали */
+  text-align: center; /* Центрирует текст внутри элементов */
+  max-width: 1200px;
+  margin: 0 auto; /* Центрирует сам контейнер на широких экранах */
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* ФОРМА ПОИСКА */
+#search-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+#search {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+}
+
+#search-form button {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  background: #f1c40f;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* КЛАСС ДЛЯ СКРЫТИЯ */
+.hidden {
+  display: none !important;
+}
+
+/* СЕТКА ФИЛЬМОВ */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+  width: 100%; /* Чтобы сетка занимала всю ширину контейнера */
+}
+
+.movie-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left; /* Текст внутри карточки остается слева */
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-card__info {
+  padding: 15px;
+}
+
+/* ПАГИНАЦИЯ */
+.pagination {
+  margin: 40px 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.page-btn.active {
+  background: #f1c40f;
+  color: black;
+  border-color: #f1c40f;
+  font-weight: bold;
+}
+
+/* ЗВЕЗДЫ И ОТЗЫВЫ */
+.stars-container {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 32px;
+  color: #444;
+}
+
+.star.selected {
+  color: #f1c40f;
+  text-shadow: 0 0 10px gold;
+}
+
+#reset-rating {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+#submit-review {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}

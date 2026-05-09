@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieHub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="home-page">
+      <img class="logo" src="Film.png" alt="Logo" />
+      <h1>MovieHub</h1>
+      <p>Discover your next favorite film</p>
+      <form id="search-form">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search..."
+          required
+        />
+        <button type="submit">🔍 Search</button>
+      </form>
+      <p class="js-movies-found">Start searching!</p>
+      <div class="movie-list"></div>
+      <div class="pagination"></div>
+    </div>
+
+    <div id="movie-details" class="hidden">
+      <button id="back-btn">← Back to search</button>
+      <div id="details-content"></div>
+
+      <hr />
+
+      <div class="interaction-section">
+        <h3>Leave a review</h3>
+        <div class="rating">
+          <span>Rating: </span>
+          <input type="hidden" id="user-rating" value="0" />
+
+          <div class="stars-container" id="stars-picker">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+            <span class="star" data-value="6">★</span>
+            <span class="star" data-value="7">★</span>
+            <span class="star" data-value="8">★</span>
+            <span class="star" data-value="9">★</span>
+            <span class="star" data-value="10">★</span>
+          </div>
+
+          <button id="reset-rating" type="button">Reset</button>
+          <p id="rating-value">Selected: 0/10</p>
+        </div>
+
+        <textarea
+          id="comment-text"
+          placeholder="Write your comment here..."
+        ></textarea>
+        <button id="submit-review">Post Review</button>
+
+        <div id="reviews-container"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
