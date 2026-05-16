@@ -56,24 +56,40 @@ function renderMovieList(movies) {
     .join("");
 }
 
-// 3. Пагинация (ИСПРАВЛЕННАЯ)
+// 3. Пагинация (С кнопками "Первая" и "Последняя")
 function renderPagination(totalResults) {
   const container = document.querySelector(".pagination");
   const totalPages = Math.ceil(totalResults / 10);
+
   if (totalPages <= 1) {
     container.innerHTML = "";
     return;
   }
 
+  // Ограничение OMDB API (обычно доступно до 100 страниц)
   const maxPages = Math.min(totalPages, 100);
+
   let start = Math.max(1, currentPage - 2);
   let end = Math.min(maxPages, start + 4);
   if (end - start < 4) start = Math.max(1, end - 4);
 
   let html = "";
+
+  // Кнопка "В самое начало" (показывается, если мы не на 1-й странице)
+  if (currentPage > 1) {
+    html += `<button class="page-btn" onclick="searchMovies(null, 1)">« First</button>`;
+  }
+
+  // Основные цифровые кнопки
   for (let i = start; i <= end; i++) {
     html += `<button class="page-btn ${i === currentPage ? "active" : ""}" onclick="searchMovies(null, ${i})">${i}</button>`;
   }
+
+  // Кнопка "В самый конец" (показывается, если мы еще не на последней доступной странице)
+  if (currentPage < maxPages) {
+    html += `<button class="page-btn" onclick="searchMovies(null, ${maxPages})">Last »</button>`;
+  }
+
   container.innerHTML = html;
 }
 
