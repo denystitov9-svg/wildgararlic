@@ -120,30 +120,48 @@ async function showMovieDetails(id) {
   loadReviews();
 }
 
-// 5. ЛОГИКА ЗВЕЗД (НОВАЯ)
+// 5. ЛОГИКА ЗВЕЗД (ИСПРАВЛЕННАЯ)
 const stars = document.querySelectorAll(".star");
 const ratingInput = document.getElementById("user-rating");
 const ratingValueText = document.getElementById("rating-value");
 
 function updateStars(val) {
-  stars.forEach((s) => s.classList.toggle("selected", s.dataset.value <= val));
+  stars.forEach((s) =>
+    s.classList.toggle("selected", parseInt(s.dataset.value) <= parseInt(val)),
+  );
   ratingValueText.textContent = `Selected: ${val}/10`;
   ratingInput.value = val;
 }
 
 stars.forEach((star) => {
   star.onclick = () => updateStars(star.dataset.value);
+
+  // При наведении подсвечиваем только звезды ДО текущей
   star.onmouseover = () => {
-    const v = star.dataset.value;
-    stars.forEach(
-      (s) => (s.style.color = s.dataset.value <= v ? "#f1c40f" : ""),
-    );
+    const currentHoverValue = parseInt(star.dataset.value);
+    stars.forEach((s) => {
+      if (parseInt(s.dataset.value) <= currentHoverValue) {
+        s.style.color = "#f1c40f";
+        s.style.textShadow = "0 0 10px gold";
+      } else {
+        s.style.color = "#444"; // Возвращаем серый цвет остальным звездам
+        s.style.textShadow = "none";
+      }
+    });
   };
-  star.onmouseout = () => stars.forEach((s) => (s.style.color = ""));
+
+  // Когда убираем мышку, возвращаем те звезды, которые были реально выбраны кликом
+  star.onmouseout = () => {
+    const savedRating = parseInt(ratingInput.value) || 0;
+    stars.forEach((s) => {
+      s.style.color = ""; // Сбрасываем инлайн-стили hover
+      s.style.textShadow = "";
+      s.classList.toggle("selected", parseInt(s.dataset.value) <= savedRating);
+    });
+  };
 });
 
 document.getElementById("reset-rating").onclick = () => updateStars(0);
-
 // 6. Отзывы
 document.getElementById("submit-review").onclick = () => {
   const text = document.getElementById("comment-text").value;

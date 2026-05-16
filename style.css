@@ -175,3 +175,13 @@ textarea {
   cursor: pointer;
   margin-top: 10px;
 }
+#submit-review {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+/* Лишних скобок тут быть не должно! */
