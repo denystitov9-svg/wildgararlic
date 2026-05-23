@@ -62,7 +62,7 @@ h1 {
   padding: 10px 25px;
   border-radius: 25px;
   border: none;
-  background: #0c5977;
+  background: #f1c40f;
   color: black;
   font-weight: bold;
   cursor: pointer;
@@ -127,9 +127,9 @@ h1 {
 }
 
 .page-btn.active {
-  background: #ffffff;
+  background: #f1c40f;
   color: black;
-  border-color: #ff0000;
+  border-color: #f1c40f;
   font-weight: bold;
 }
 
@@ -142,8 +142,8 @@ h1 {
 }
 
 .star.selected {
-  color: #ffffff;
-  text-shadow: 0 0 10px rgb(255, 0, 0);
+  color: #f1c40f;
+  text-shadow: 0 0 10px gold;
 }
 
 #reset-rating {
@@ -185,26 +185,3 @@ textarea {
   margin-top: 10px;
 }
 /* Лишних скобок тут быть не должно! */
-
-/* КНОПКА НАЗАД */
-#back-btn {
-  padding: 10px 20px;
-  background: rgba(243, 12, 12, 0.658);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-  display: inline-flex;
-  align-items: center;
-}
-
-#back-btn:hover {
-  background: #1cf509;
-  color: black;
-  border-color: #0f38f1;
-  transform: translateX(-5px); /* Легкий эффект сдвига влево */
-  box-shadow: 0 0 15px rgba(241, 196, 15, 0.4);
-}

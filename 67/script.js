@@ -141,10 +141,10 @@ stars.forEach((star) => {
     const currentHoverValue = parseInt(star.dataset.value);
     stars.forEach((s) => {
       if (parseInt(s.dataset.value) <= currentHoverValue) {
-        s.style.color = "#ffffff";
+        s.style.color = "#f1c40f";
         s.style.textShadow = "0 0 10px gold";
       } else {
-        s.style.color = "#ffffff"; // Возвращаем серый цвет остальным звездам
+        s.style.color = "#444"; // Возвращаем серый цвет остальным звездам
         s.style.textShadow = "none";
       }
     });
@@ -199,7 +199,6 @@ function loadReviews() {
 document.getElementById("back-btn").onclick = () => {
   document.getElementById("home-page").classList.remove("hidden");
   document.getElementById("movie-details").classList.add("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" }); // Плавно возвращает наверх страницы к фильмам
 };
 
 document.getElementById("search-form").onsubmit = (e) => searchMovies(e);
