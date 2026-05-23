@@ -144,7 +144,7 @@ stars.forEach((star) => {
         s.style.color = "#ffffff";
         s.style.textShadow = "0 0 10px gold";
       } else {
-        s.style.color = "#ffffff"; // Возвращаем серый цвет остальным звездам
+        s.style.color = "#5c5c5c"; // Возвращаем серый цвет остальным звездам
         s.style.textShadow = "none";
       }
     });
