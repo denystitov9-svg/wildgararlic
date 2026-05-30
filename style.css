@@ -134,11 +134,25 @@ h1 {
 }
 
 /* ЗВЕЗДЫ И ОТЗЫВЫ */
+.rating {
+  display: flex;
+  align-items: center; /* Выравнивает всё строго по вертикальному центру */
+  gap: 15px; /* Делает аккуратные отступы между текстом, звёздами и кнопкой */
+  flex-wrap: wrap; /* Чтобы на мобильных экранах элементы красиво переносились */
+  margin-bottom: 15px;
+}
+
 .stars-container {
-  display: inline-block;
+  display: flex; /* Выстраивает сами звёзды строго в один ряд */
+  gap: 4px; /* Делает небольшое расстояние между звёздами */
   cursor: pointer;
   font-size: 32px;
-  color: #444;
+  color: #5c5c5c; /* Базовый серый цвет для невыбранных звёзд */
+}
+
+/* Элемент <p> с текстом "Selected: 0/10" убираем с новой строки (опционально) */
+#rating-value {
+  margin: 0;
 }
 
 .star.selected {
@@ -175,16 +189,6 @@ textarea {
   cursor: pointer;
   margin-top: 10px;
 }
-#submit-review {
-  background: #27ae60;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-/* Лишних скобок тут быть не должно! */
 
 /* КНОПКА НАЗАД */
 #back-btn {
@@ -205,6 +209,6 @@ textarea {
   background: #1cf509;
   color: black;
   border-color: #0f38f1;
-  transform: translateX(-5px); /* Легкий эффект сдвига влево */
+  transform: translateX(-5px);
   box-shadow: 0 0 15px rgba(241, 196, 15, 0.4);
 }

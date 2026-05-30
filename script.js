@@ -93,7 +93,6 @@ function renderPagination(totalResults) {
   container.innerHTML = html;
 }
 
-// 4. Детали фильма
 async function showMovieDetails(id) {
   currentMovieId = id;
   document.getElementById("home-page").classList.add("hidden");
@@ -105,18 +104,30 @@ async function showMovieDetails(id) {
   const res = await fetch(`https://www.omdbapi.com/?apikey=800c93bf&i=${id}`);
   const m = await res.json();
 
+  const searchQuery = encodeURIComponent(
+    m.Title + " " + m.Year + " watch online",
+  );
+
   content.innerHTML = `
-    <div style="display: flex; gap: 20px;">
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
       <img src="${m.Poster}" style="width: 250px; border-radius: 10px;">
-      <div>
-        <h2>${m.Title}</h2>
-        <p><strong>Year:</strong> ${m.Year}</p>
+      <div style="flex: 1; min-width: 200px;">
+        <h2>${m.Title} </h2>
+        <p><strong>Year:</strong>  ${m.Year}</p>
+        <p><strong>Genre:</strong> ${m.Genre}</p>
         <p><strong>Plot:</strong> ${m.Plot}</p>
-        <p><strong>IMDB Rating:</strong> ⭐ ${m.imdbRating}</p>
+        <p><strong>IMDB Rating:</strong> ★ ${m.imdbRating}</p>
+        <a 
+          href="https://www.google.com/search?q=${searchQuery}"
+          target="_blank"
+          style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:12px 24px;background:#4285F4;color:white;border-radius:25px;text-decoration:none;font-weight:bold;font-size:15px;"
+          onmouseover="this.style.background='#1a73e8'"
+          onmouseout="this.style.background='#4285F4'"
+        >🎬 Watch on Google</a>
       </div>
     </div>
   `;
-  updateStars(0); // Сброс звезд при открытии нового фильма
+  updateStars(0);
   loadReviews();
 }
 
@@ -187,7 +198,7 @@ function loadReviews() {
       .map(
         (r) => `
     <div style="background: rgba(255,255,255,0.1); padding: 10px; margin-top: 10px; border-radius: 8px;">
-      <p style="color: #f1c40f;">${"★".repeat(r.rating)} (${r.rating}/10)</p>
+      <p style="color: #ffffff;">${"★".repeat(r.rating)} (${r.rating}/10)</p>
       <p>${r.text}</p>
       <small>${r.date}</small>
     </div>
